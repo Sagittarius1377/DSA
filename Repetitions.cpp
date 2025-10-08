@@ -1,20 +1,24 @@
 #include<bits/stdc++.h>
 using namespace std;
-   int main(){
-    int n ;
-    cin >> n ;
-    int a[n-1];
-    for(int i = 0 ; i < n-1; ++i){
-        cin >>a[i];
+int main(){
+    string s ;
+    cin>>s;
+
+    int rep1 = 1;
+    int rep2 = 1;
+
+    // length of longest repetition in string
+    for(int i = 0 ; i < s.size()-1 ; i++){
+
+        if(s[i]== s[i+1]){
+            rep1 =rep1 + 1;
+        }
+        
+        else{
+            rep2= max(rep1, rep2); 
+            rep1 =1 ;
+        }
     }
-    int sum_a = 0 ;
-    for(int i=0 ; i <n -1; ++i ){
-        sum_a = sum_a + a[i];
-    }
-    int sum_t = 0 ;
-    for(int i=0 ; i <=n ; ++i ){
-        sum_t = sum_t + i ;
-    }
-    int result = sum_t - sum_a;
-    cout<< result ;     
-   }
+    cout<< max(rep1, rep2);
+
+}
